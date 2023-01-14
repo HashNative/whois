@@ -6,8 +6,9 @@ This is what it looks like on my phone in action.
 <br />
 Never misses a single person, not even in infrared mode (during night time) :)
 
+(blurred for privacy reasons)
 <br />
-![alt text](whosthat.jpg "whois in action on my phone")
+![alt text](whosthat.jpg "whosthat in action on my phone")
 ### Built With
 * Java 14
 * Spring Boot 2.4.2
