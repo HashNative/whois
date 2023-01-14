@@ -5,8 +5,7 @@ whois is app for detecting people on CCTV/cameras and sending notifications with
 This is what it looks like on my phone in action.
 <br />
 Never misses a single person, not even in infrared mode (during night time) :)
-<br />
-(blurred for privacy reasons)
+
 <br />
 ![alt text](whosthat.jpg "whois in action on my phone")
 ### Built With
