@@ -1,0 +1,72 @@
+buildscript {
+    ext {
+        palantirGradleDockerVersion = '0.19.2'
+    }
+    dependencies {
+        classpath("gradle.plugin.com.palantir.gradle.docker:gradle-docker:${palantirGradleDockerVersion}")
+    }
+}
+
+plugins {
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'com.palantir.docker'
+
+group = 'hr.kn'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://repo.clojars.org/"
+    }
+    maven {
+        url "https://repository.hellonico.info/repository/hellonico"
+    }
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    compile group: 'com.github.pengrad', name: 'java-telegram-bot-api', version: '5.0.0'
+    compile 'org.springframework.boot:spring-boot-starter-webflux'
+    compile group: 'org.eclipse.jetty', name: 'jetty-reactive-httpclient', version: '1.1.4'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    compile group: 'origami', name: 'origami', version: '4.2.0-1'
+    compile group: 'origami', name: 'filters', version: '1.4'
+    compile group: 'origami', name: 'optimized-image-enhanced', version: '1.0'
+    compile group: 'info.picocli', name: 'picocli', version: '4.1.0'
+    compile group: 'io.github.vzhn', name: 'netty-http-authenticator', version: '1.1'
+    compile group: 'org.apache.httpcomponents.client5', name: 'httpclient5', version: '5.0.3'
+    compile group: 'org.apache.httpcomponents.core5', name: 'httpcore5-reactive', version: '5.0.3'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+docker {
+    name "${project.name}"
+    tags "latest"
+    files jar.archivePath
+    buildArgs(['JAR_FILE': "${jar.archiveName}"])
+}
+
+docker.dependsOn build
