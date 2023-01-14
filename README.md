@@ -1,14 +1,14 @@
 ## About The Project
-whosthat is app for detecting people on CCTV/cameras and sending notifications with photo snapshots using Telegram bot.
+whois is app for detecting people on CCTV/cameras and sending notifications with photo snapshots using Telegram bot.
 
-## whosthat in action
+## whois in action
 This is what it looks like on my phone in action.
 <br />
 Never misses a single person, not even in infrared mode (during night time) :)
 <br />
 (blurred for privacy reasons)
 <br />
-![alt text](whosthat.jpg "whosthat in action on my phone")
+![alt text](whosthat.jpg "whois in action on my phone")
 ### Built With
 * Java 14
 * Spring Boot 2.4.2
@@ -24,7 +24,7 @@ Never misses a single person, not even in infrared mode (during night time) :)
 
 ### Prerequisites
 
-To be able to run whosthat, working Docker installation and gradle should be available on your machine:
+To be able to run whois, working Docker installation and gradle should be available on your machine:
 * check if Docker is working
   ```sh
   docker -v
@@ -39,8 +39,8 @@ To be able to run whosthat, working Docker installation and gradle should be ava
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/karlonovak/whosthat
-   cd whosthat
+   git clone https://github.com/HashNative/whois
+   cd whois
    ```
 2. Build app and Docker image (might take a while to download darknet model)
    ```sh
@@ -57,12 +57,12 @@ To be able to run whosthat, working Docker installation and gradle should be ava
     ```
 6. If everything went well, success message should be shown:
     ```sh
-    Started WhosThatApplication in x.xx seconds (JVM running for y.yyy)
+    Started WhoisApplication in x.xx seconds (JVM running for y.yyy)
     ```
 
 ## Environment file
 
-whosthat comes with provided example env file, whosthat.env file inside project root.
+whois comes with provided example env file, whosthat.env file inside project root.
 Environment file should be filled in with your camera's data. Available variables are:
 1. [Optional] configurable log level for app, best left default
 ```sh
